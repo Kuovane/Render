@@ -7,10 +7,21 @@ project(${APP_NAME})
 #add_definitions(-DUSE_GLFW_RENDER)
 
 
-include_directories(${CMAKE_SOURCE_DIR}/src )
+include_directories(${CMAKE_SOURCE_DIR}/src
+${CMAKE_SOURCE_DIR}/include  
+${CMAKE_SOURCE_DIR}/src/utils  
+)
 
 
-set(SRCS ${CMAKE_SOURCE_DIR}/src/main.cpp
+set(SRCS
+${CMAKE_SOURCE_DIR}/src/main.cpp
+${CMAKE_SOURCE_DIR}/src/glad/glad_gl.c
+${CMAKE_SOURCE_DIR}/src/glad/glad_vulkan.c
+${CMAKE_SOURCE_DIR}/src/utils/Utils.cpp
+${CMAKE_SOURCE_DIR}/src/utils/TRWindow.cpp
+${CMAKE_SOURCE_DIR}/src/io/VxFile.cpp
+${CMAKE_SOURCE_DIR}/src/image/stb_image.cpp
+${CMAKE_SOURCE_DIR}/src/render/TRRender.cpp
 )
 
 
@@ -21,6 +32,10 @@ add_executable(Render ${SRCS} )
 
 link_directories(${CMAKE_SOURCE_DIR}/libs)
 
+IF (WIN32)
+    target_link_libraries(Render   ${CMAKE_SOURCE_DIR}/libs/glfw3.lib) 
+    target_link_libraries(Render   OpenGL32 legacy_stdio_definitions) 
+ENDIF ()
 
 #-lGLEW -lglfw3 -lGL -lX11 -lpthread -lXrandr -lXi
-#target_link_libraries(Render   ${CMAKE_SOURCE_DIR}/libs/libz.a) 
+#target_link_libraries(Render   opengl64) 

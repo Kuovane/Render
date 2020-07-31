@@ -1,0 +1,26 @@
+cmake_minimum_required(VERSION 3.1)
+
+set(APP_NAME Render)
+
+project(${APP_NAME})
+
+#add_definitions(-DUSE_GLFW_RENDER)
+
+
+include_directories(${CMAKE_SOURCE_DIR}/src )
+
+
+set(SRCS ${CMAKE_SOURCE_DIR}/src/main.cpp
+)
+
+
+
+
+add_executable(Render ${SRCS} )
+
+
+link_directories(${CMAKE_SOURCE_DIR}/libs)
+
+
+#-lGLEW -lglfw3 -lGL -lX11 -lpthread -lXrandr -lXi
+#target_link_libraries(Render   ${CMAKE_SOURCE_DIR}/libs/libz.a) 

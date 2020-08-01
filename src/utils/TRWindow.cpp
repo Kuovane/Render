@@ -20,7 +20,8 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 		 exit(EXIT_FAILURE);
 	 glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
 	 glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
-	 glfwWindowHint(GLFW_SAMPLES, 4);
+
+	// glfwWindowHint(GLFW_SAMPLES, 4);
 #ifdef __APPLE__
 	 glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // uncomment this statement to fix compilation on OS X
 #endif
